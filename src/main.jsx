@@ -14,16 +14,20 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Navigate,
+  useParams
 } from 'react-router-dom'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />} errorElement={<ErrorPage />}>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/about' element={<AboutPage />} />
-      <Route path='/recipe/:id' element={<RecipePage />}>
-        <Route path='/recipe/:id/ingredients' element={<Ingredients />} />
-        <Route path='/recipe/:id/instructions' element={<Instructions />} />
+      <Route index element={<HomePage />} />
+      <Route path='about' element={<AboutPage />} />
+      <Route path='recipe/:id' element={<RecipePage />}>
+        <Route index element={<Navigate to='ingredients' replace />}/>
+        <Route path='ingredients' element={<Ingredients />} />
+        <Route path='instructions' element={<Instructions />} />
       </Route>
     </Route>
   )
