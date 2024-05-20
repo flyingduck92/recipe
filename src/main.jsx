@@ -14,8 +14,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Navigate,
-  useParams
+  Navigate
 } from 'react-router-dom'
 
 
